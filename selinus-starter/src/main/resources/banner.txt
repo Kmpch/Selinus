@@ -1,0 +1,5 @@
+${AnsiColor.BRIGHT_GREEN}
+${AnsiColor.BRIGHT_RED}
+    还没想好banner!
+Application Version: ${application.version}${application.formatted-version}
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}

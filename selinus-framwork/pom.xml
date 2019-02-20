@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>us.kpm</groupId>
+        <artifactId>selinus</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>selinus-framwork</artifactId>
+    <packaging>pom</packaging>
+    <name>selinus-framwork</name>
+    <description>selinus-framwork</description>
+    <modules>
+        <module>selinus-client</module>
+        <module>selinus-common</module>
+        <module>selinus-register</module>
+        <module>selinus-server</module>
+    </modules>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>sxc-releases</id>
+            <name>Sxc Releases</name>
+            <url>http://121.40.208.242:8081/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>sxc-snapshots</id>
+            <name>Sxc Snapshots</name>
+            <url>http://121.40.208.242:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

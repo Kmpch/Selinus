@@ -1,0 +1,14 @@
+spring.application.name: ddd-starter
+spring.profiles.active: dev
+logging.path: /home/admin/taobao-tomcat-production-7.0.59.3/logs
+logging.level.root: info
+# info信息
+info.app.name: ${spring.application.name}
+info.app.profiles: ${spring.profiles.active}
+
+spring.output.ansi.enabled: detect
+server:
+  port: 8200
+
+
+
