@@ -29,16 +29,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>sxc-releases</id>
-            <name>Sxc Releases</name>
-            <url>http://121.40.208.242:8081/repository/maven-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>sxc-snapshots</id>
-            <name>Sxc Snapshots</name>
-            <url>http://121.40.208.242:8081/repository/maven-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
