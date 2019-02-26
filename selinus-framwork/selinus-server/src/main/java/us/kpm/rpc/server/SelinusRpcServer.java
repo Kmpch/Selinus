@@ -1,11 +1,21 @@
 package us.kpm.rpc.server;
 
 import com.google.common.collect.Maps;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import us.kpm.rpc.common.SelinusRpcDecoder;
+import us.kpm.rpc.common.SelinusRpcEncoder;
+import us.kpm.rpc.common.SelinusRpcRequest;
+import us.kpm.rpc.common.SelinusRpcResponse;
 import us.kpm.rpc.register.SelinusRpcRegistry;
 
 import java.util.Map;
@@ -68,7 +78,36 @@ public class SelinusRpcServer implements ApplicationContextAware,InitializingBea
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        //创建服务端的通信对象
+        // 创建服务端的通信对象
+        ServerBootstrap server = new ServerBootstrap();
+
+        // 创建异步通信的事件组:用于建立TCP连接
+        NioEventLoopGroup bossGroup = new NioEventLoopGroup();
+
+        //创建异步通信的事件组：用于处理channel(通道)的I/O事件
+        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+
+        //设置通信的参数
+        //注册两个事件组
+        server.group(bossGroup,workerGroup)
+                //采用异步serverSocket
+                .channel(NioServerSocketChannel.class)
+                //初始化通道
+                .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel channel) throws Exception {
+
+                            channel.pipeline()
+                                    //解码请求参数
+                                    .addLast(new SelinusRpcDecoder(SelinusRpcRequest.class))
+                                    .addLast(new SelinusRpcEncoder(SelinusRpcResponse.class))
+                                    .addLast();
+
+
+                        }})
+                .option(ChannelOption.SO_BACKLOG,128)
+                .childOption(ChannelOption.SO_KEEPALIVE,true);
+
 
 
     }

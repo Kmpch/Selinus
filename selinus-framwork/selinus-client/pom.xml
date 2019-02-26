@@ -14,12 +14,6 @@
     <dependencies>
 
         <dependency>
-            <artifactId>gateway-client</artifactId>
-            <groupId>com.sxc.gateway</groupId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -28,6 +22,19 @@
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-core</artifactId>
         </dependency>
+
+        <dependency>
+            <artifactId>selinus-common</artifactId>
+            <groupId>us.kpm</groupId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>selinus-register</artifactId>
+            <groupId>us.kpm</groupId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

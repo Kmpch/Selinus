@@ -21,6 +21,12 @@
         </dependency>
 
         <dependency>
+            <artifactId>selinus-common</artifactId>
+            <groupId>us.kpm</groupId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
